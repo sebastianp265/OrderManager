@@ -1,5 +1,6 @@
 package com.github.sebastianp265.ordermanager.dtos;
 
+import lombok.Builder;
 import lombok.Value;
 import org.springframework.data.util.Pair;
 
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Value
+@Builder
 public class CreateOrderDto {
 
     Long clientId;

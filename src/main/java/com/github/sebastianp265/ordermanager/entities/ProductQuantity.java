@@ -11,6 +11,7 @@ import org.hibernate.annotations.Cascade;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class ProductQuantity {
 
     @Id

@@ -1,8 +1,8 @@
 package com.github.sebastianp265.ordermanager.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.Set;
 
@@ -13,6 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Jacksonized
+@ToString
 public class Order {
 
     @Id
@@ -28,6 +30,7 @@ public class Order {
     private Set<ProductQuantity> productQuantities;
 
     private Status status;
+
     private boolean isCancelled;
 
     public enum Status {NEW, IN_PROGRESS, DELIVERED}
