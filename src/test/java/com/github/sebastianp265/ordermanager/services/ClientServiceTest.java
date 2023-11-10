@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.*;
 import org.mockito.junit.jupiter.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -48,7 +50,7 @@ class ClientServiceTest {
         when(clientRepository.findById(anyLong())).thenReturn(Optional.empty());
         // act
         // assert
-        assertThrows(Exception.class, () -> clientService.findClientById(id));
+        assertThrows(ResponseStatusException.class, () -> clientService.findClientById(id));
     }
 
     @Test

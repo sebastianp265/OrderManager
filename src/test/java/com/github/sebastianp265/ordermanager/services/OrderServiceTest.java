@@ -25,16 +25,12 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
-
     @Mock
     private ClientRepository clientRepository;
-
     @Mock
     private ProductRepository productRepository;
-
     @Mock
     private OrderRepository orderRepository;
-
     @InjectMocks
     private OrderService orderService;
 
@@ -44,19 +40,18 @@ class OrderServiceTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        // deserialize json files to objects using different method than in ProductServiceTest
         ObjectMapper objectMapper = new ObjectMapper();
-        Client clientForRepository = objectMapper.readValue(getClass().getResourceAsStream("/clients.json"), Client.class);
-        Product productForRepository = objectMapper.readValue(getClass().getResourceAsStream("/products.json"), Product.class);
-        Product product2ForRepository = objectMapper.readValue(getClass().getResourceAsStream("/products2.json"), Product.class);
+        Client clientForRepository = objectMapper.readValue(getClass().getResourceAsStream("/client.json"), Client.class);
+        Product productForRepository = objectMapper.readValue(getClass().getResourceAsStream("/product.json"), Product.class);
+        Product product2ForRepository = objectMapper.readValue(getClass().getResourceAsStream("/product2.json"), Product.class);
 
         when(clientRepository.findById(1L)).thenReturn(java.util.Optional.of(clientForRepository));
         when(productRepository.findById(1L)).thenReturn(java.util.Optional.of(productForRepository));
         when(productRepository.findById(2L)).thenReturn(java.util.Optional.of(product2ForRepository));
 
-        client = objectMapper.readValue(getClass().getResourceAsStream("/clients.json"), Client.class);
-        product = objectMapper.readValue(getClass().getResourceAsStream("/products.json"), Product.class);
-        product2 = objectMapper.readValue(getClass().getResourceAsStream("/products2.json"), Product.class);
+        client = objectMapper.readValue(getClass().getResourceAsStream("/client.json"), Client.class);
+        product = objectMapper.readValue(getClass().getResourceAsStream("/product.json"), Product.class);
+        product2 = objectMapper.readValue(getClass().getResourceAsStream("/product2.json"), Product.class);
     }
 
     @Test
