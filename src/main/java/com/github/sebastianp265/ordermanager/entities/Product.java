@@ -1,24 +1,27 @@
 package com.github.sebastianp265.ordermanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
-@Data
-@Entity(name = "Products")
+@Entity(name = "Product_table")
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue
     Long id;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Order> orders;
 
     private String name;
 

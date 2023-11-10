@@ -1,23 +1,27 @@
 package com.github.sebastianp265.ordermanager.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
-@Data
-@Entity(name = "Clients")
+@Entity(name = "Client_table")
+@Getter
+@Setter
+@Builder
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue
     private Long id;
-
-    @OneToMany(mappedBy = "client")
-    private Set<Order> orders;
 
     private String name;
 
